@@ -3,7 +3,6 @@ import { Editor, Location, Path, Point, Range } from 'slate';
 import { TNodeEntry } from '../node/TNodeEntry';
 import { mergeNodes } from '../transforms/mergeNodes';
 import { removeNodes } from '../transforms/removeNodes';
-import { select } from '../transforms/select';
 import { TEditor, Value } from './TEditor';
 import { createPathRef } from './createPathRef';
 import { createPointRef } from './createPointRef';
@@ -175,12 +174,6 @@ export const deleteMerge = <V extends Value>(
         hanging: true,
         voids,
       });
-    }
-
-    const point = endRef.unref() || startRef.unref();
-
-    if (options.at == null && point) {
-      select(editor as any, point);
     }
   });
 };
